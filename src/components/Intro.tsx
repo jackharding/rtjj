@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import BlockContent from '@sanity/block-content-to-react';
 
-import Container from "./Container";
-import T from "./Title";
+import Container from './Container';
+import T from './Title';
 
 const Title = motion.custom(T);
 
@@ -16,8 +17,8 @@ const animation = {
 	container: {
 		show: {
 			transition: {
-				delayChildren: 1
-			}
+				delayChildren: 1,
+			},
 		},
 	},
 	title: {
@@ -34,26 +35,29 @@ const animation = {
 		},
 		show: {
 			opacity: 1,
-		}
+		},
 	},
-}
+};
 
-const Intro = () => {
-	return (
-		<IntroStyles
-			initial="hidden" 
-			animate="show"
-			variants={animation.container}
-		>
-			<Container size="sm">
-				<Title 
-					as="h2"
-					variants={animation.title}
-				>Rob Taylor Jiu Jitsu Academy</Title>
-				<motion.p variants={animation.text}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis optio minima quaerat quos, ratione eaque magnam corporis alias voluptatum eius est voluptate sint nobis autem deserunt, eum libero officia tenetur?</motion.p>
-			</Container>
-		</IntroStyles>
-	);
-}
+const Intro = ({ title, text }) => (
+	<IntroStyles
+		initial="hidden"
+		animate="show"
+		variants={animation.container}
+	>
+		<Container size="sm">
+			<Title
+				as="h2"
+				variants={animation.title}
+			>
+				{ title }
+			</Title>
 
-export default Intro
+			<motion.div>
+				<BlockContent blocks={text} />
+			</motion.div>
+		</Container>
+	</IntroStyles>
+);
+
+export default Intro;

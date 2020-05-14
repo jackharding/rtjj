@@ -2,8 +2,12 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../layouts/Main';
+
+import CallToAction from '../components/CallToAction';
+import Contact from '../components/Contact';
 import Hero from '../components/Hero';
 import Intro from '../components/Intro';
+import Pricing from '../components/Pricing';
 import ScheduleSwitcher from '../components/Schedule/ScheduleSwitcher';
 
 interface HomeProps {
@@ -14,8 +18,12 @@ const Home = ({ data }: HomeProps) => {
 	console.log('home props', data);
 
 	const {
+		settings,
 		home: {
 			hero,
+			_rawIntro,
+			pricing,
+			banner,
 		},
 	} = data;
 
@@ -28,9 +36,36 @@ const Home = ({ data }: HomeProps) => {
 				linkText={hero.linkText}
 			/>
 
-			<Intro />
+			<Intro
+				title={_rawIntro.title}
+				text={_rawIntro.text}
+			/>
 
 			<ScheduleSwitcher />
+
+			<Pricing
+				title={pricing.title}
+				text={pricing.text}
+				tiers={pricing.tiers}
+			/>
+
+			<CallToAction
+				title={banner.title}
+				text={banner.text}
+				image={banner.image}
+				link={banner.link}
+				linkText={banner.linkText}
+			/>
+
+			<Contact
+				text={settings.contactText}
+				address={settings.address}
+				email={settings.email}
+				phone={settings.phone}
+				mapIframe={settings.mapIframe}
+				facebookUrl={settings.facebookUrl}
+				instagramUrl={settings.instagramUrl}
+			/>
 		</Layout>
 	);
 };

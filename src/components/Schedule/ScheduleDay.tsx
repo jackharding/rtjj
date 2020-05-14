@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import moment from 'moment';
 
 const ScheduleDayStyles = styled.div`
+	display: flex;
+	flex-direction: column;
 	flex-basis: 185px;
 	flex-shrink: 0;
 
@@ -25,6 +27,7 @@ const ScheduleDayStyles = styled.div`
 	}
 
 	.classes {
+		flex: 1;
 		margin-top: 10px;
 	}
 

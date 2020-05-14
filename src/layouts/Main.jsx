@@ -4,6 +4,8 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import theme from '../config/theme';
 import { global, reset } from '../styles';
+
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 const GlobalStyles = createGlobalStyle`
@@ -34,6 +36,8 @@ const Main = ({ children }) => {
 				logo={site.logo.asset.url}
 			/>
 			{ children }
+
+			<Footer />
 		</ThemeProvider>
 	);
 };
