@@ -114,68 +114,88 @@ const animation = {
 				type: 'tween',
 				delay: 0.25,
 				staggerChildren: 0.5,
-				ease: 'linear'
-			}
+				ease: 'linear',
+			},
 		},
 	},
 	headingWord: {
-		hidden: { 
+		hidden: {
 			opacity: 0,
-			x: -10
+			x: -10,
 		},
-		show: { 
+		show: {
 			opacity: 1,
 			x: 0,
-		}
+		},
 	},
 	button: {
 		hidden: { opacity: 0 },
-		show: { 
+		show: {
 			opacity: 1,
 			transition: {
-				delay: 1
-			}
-		}
-	}
-}
+				delay: 1,
+			},
+		},
+	},
+};
 
-const Hero = ({ titleParts, image, link, linkText }: HeroProps) => {
-	return (
-		<HeroStyles image={image}>
-			<Container 
-				initial="hidden" 
-				animate="show" 
-				size="md"
-			>
-				{ titleParts ? (
-					<Heading 
-						variants={animation.heading}
-					>
-						{ titleParts.map(t => (
-							<motion.span variants={animation.headingWord}>{ t }</motion.span>
-						)) }
-					</Heading>
-				) : null }
+const Hero = ({
+	titleParts, image, link, linkText,
+}: HeroProps) => (
+	<HeroStyles image={image}>
+		<Container
+			initial="hidden"
+			animate="show"
+			size="md"
+		>
+			{ titleParts ? (
+				<Heading
+					variants={animation.heading}
+				>
+					{ titleParts.map((t) => (
+						<motion.span variants={animation.headingWord}>{ t }</motion.span>
+					)) }
+				</Heading>
+			) : null }
 
-				{ link ? (
-					<Button variants={animation.button}>{ linkText || 'Sign up' }</Button>
-				) : null }
-			</Container>
+			{ link ? (
+				<Button variants={animation.button}>{ linkText || 'Sign up' }</Button>
+			) : null }
+		</Container>
 
-			<svg width="1442" height="74" viewBox="0 0 1442 74" fill="none" xmlns="http://www.w3.org/2000/svg" class="shape-lg">
-				<path d="M1441.5 1V73.5H1L1441.5 1Z" fill="#fff"/>
-			</svg>
+		<svg
+			width="1442"
+			height="74"
+			viewBox="0 0 1442 74"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			className="shape-lg"
+		>
+			<path
+				d="M1441.5 1V73.5H1L1441.5 1Z"
+				fill="#fff"
+			/>
+		</svg>
 
-			<svg width="375" height="37" viewBox="0 0 375 37" fill="none" xmlns="http://www.w3.org/2000/svg" class="shape-sm">
-				<path d="M375 0V37H0L375 0Z" fill="white"/>
-			</svg>
+		<svg
+			width="375"
+			height="37"
+			viewBox="0 0 375 37"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			className="shape-sm"
+		>
+			<path
+				d="M375 0V37H0L375 0Z"
+				fill="white"
+			/>
+		</svg>
 
-			{/* TODO: Go down button? */}
-			{/* <svg width="33" height="15" viewBox="0 0 33 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+		{/* TODO: Go down button? */}
+		{/* <svg width="33" height="15" viewBox="0 0 33 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M31.5306 0.333008L16.5 11.606L1.46936 0.333008L0 2.29216L16.5 14.6671L33 2.29216L31.5306 0.333008Z" fill="#E5E2E5"/>
 			</svg> */}
-		</HeroStyles>
-	)
-}
+	</HeroStyles>
+);
 
 export default Hero;

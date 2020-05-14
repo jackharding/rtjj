@@ -36,24 +36,73 @@ const Home = ({ data }: HomeProps) => {
 };
 
 export const query = graphql`
-  {
-    home: sanityHomePage(_id: {eq: "9f58f2c6-bb45-4e0a-ba6c-dd4d6c325c26"}) {
-      hero {
-        text
-        link
-        linkText
-        image {
-          asset {
-            url
-            fluid {
-              srcSet
-              sizes
-            }
-          }
-        }
-      }
-    }
-  }
+{
+	home: sanityHomePage(id: {eq: "f5eb4dd0-87df-59ba-a4c9-a6342099c723"}) {
+	  hero {
+		text
+		link
+		linkText
+		image {
+		  asset {
+			url
+			fluid {
+			  srcSet
+			  sizes
+			}
+		  }
+		}
+	  }
+	  _rawIntro
+	  _rawAbout
+	  coaches {
+		title
+		coaches {
+		  name
+		  role
+		  _rawBio
+		  image {
+			asset {
+			  url
+			}
+		  }
+		}
+	  }
+	  pricing {
+		title
+		text
+		tiers {
+		  title
+		  description
+		  price
+		  priceSuffix
+		  link
+		}
+	  }
+	  banner {
+		title
+		text
+		link
+		linkText
+		image {
+		  alt
+		  image {
+			asset {
+			  url
+			}
+		  }
+		}
+	  }
+	}
+	settings: sanitySiteSettings(id: { eq: "0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }) {
+	  email
+	  phone
+	  address
+	  mapIframe
+	  contactText
+	  facebookUrl
+	  instagramUrl
+	}
+  }  
 `;
 
 export default Home;

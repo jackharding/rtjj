@@ -60,6 +60,8 @@ const SliderBg = styled(motion.div)`
 `;
 
 const getPosition = ($container, $element) => {
+	if(!$element) return;
+
 	const {
 		top: containerTop,
 		left: containerLeft,
