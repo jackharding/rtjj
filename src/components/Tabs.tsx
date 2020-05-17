@@ -20,13 +20,15 @@ interface IMenuNodeDimensions {
 	left: number;
 }
 
-const Nav = styled.nav`
+const StyledOuter = styled.div`
 	position: relative;
 
 	+* {
-		margin-top: 25px;
+		margin-top: 40px;
 	}
+`;
 
+const Nav = styled.nav`
 	ul {
 		position: relative;
 		display: flex;
@@ -38,17 +40,16 @@ const Nav = styled.nav`
 
 	li {
 		+li {
-			margin-left: 5px;
+			margin-left: 25px;
 		}
 	}
 `;
 
 const Button = styled.button`
-	padding: 10px 15px;
-	border: 0;
-	background: none;
+	color: ${({ theme }) => theme.color.text};
+	font-family: ${({ theme }) => theme.font.display};
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 1.25rem;
 	cursor: pointer;
 `;
 
@@ -56,8 +57,10 @@ const SliderBg = styled(motion.div)`
 	width: 47px;
 	height: 4px;
 	position: absolute;
-	background: ${({ theme }) => theme.color.brand};
+	background: ${({ theme }) => theme.color.brand['500']};
 `;
+
+const Outer = motion.custom(StyledOuter);
 
 const getPosition = ($container, $element) => {
 	if(!$element) return;
@@ -68,13 +71,11 @@ const getPosition = ($container, $element) => {
 	} = $container.getBoundingClientRect();
 
 	let {
-		top,
 		left,
 		width,
 	} = $element.getBoundingClientRect();
 
 	return {
-		top: containerTop + top + 5,
 		left: left -= containerLeft,
 		width,
 	};
@@ -82,9 +83,9 @@ const getPosition = ($container, $element) => {
 
 let resizeTimer;
 
-const Tabs: React.FC = ({
-	tabs, activeIndex, onChange,
-}: ITabsProps) => {
+const Tabs = React.forwardRef(({
+	tabs, activeIndex, onChange, variants, animate,
+}, ref: ITabsProps) => {
 	const [ sliderDimensions, setSliderDimensions ] = useState<IMenuNodeDimensions>({});
 
 	const $nav = useRef<HTMLElement>(null!);
@@ -113,8 +114,14 @@ const Tabs: React.FC = ({
 	}, [ activeIndex ]);
 
 	return (
-		<>
-			<Nav ref={$nav}>
+		<Outer
+			ref={ref}
+			variants={variants}
+			animate={animate}
+		>
+			<Nav
+				ref={$nav}
+			>
 				<SliderBg
 					positionTransition={{
 						type: 'tween',
@@ -126,6 +133,7 @@ const Tabs: React.FC = ({
 						height: sliderDimensions.height,
 					}}
 					style={{
+						top: 27,
 						left: sliderDimensions.left,
 					}}
 				/>
@@ -148,8 +156,8 @@ const Tabs: React.FC = ({
 					))}
 				</ul>
 			</Nav>
-		</>
+		</Outer>
 	);
-};
+});
 
 export default Tabs;

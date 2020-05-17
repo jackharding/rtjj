@@ -16,7 +16,7 @@ const ScheduleDayStyles = styled.div`
 	.classes {
 		padding: 23px 15px;
 		background: #FFFFFF;
-		box-shadow: 4px 4px 5px rgba(27, 56, 141, 0.08);
+		box-shadow: ${({ theme }) => theme.shadow.card};
 	}
 
 	.day {
@@ -35,6 +35,7 @@ const ScheduleDayStyles = styled.div`
 		display: flex;
 
 		&-time {
+			width: 34px;
 			margin-right: 8px;
 			font-family: ${({ theme }) => theme.font.display};
 			font-size: 1rem;
@@ -53,8 +54,11 @@ const ScheduleDayStyles = styled.div`
 	}
 `;
 
-const ScheduleDay = ({ day, classes }) => (
-	<ScheduleDayStyles>
+const ScheduleDay = React.forwardRef(({ day, classes, className }, ref) => (
+	<ScheduleDayStyles
+		className={className}
+		ref={ref}
+	>
 		<h5 className="day">{ day }</h5>
 
 		<div className="classes">
@@ -69,7 +73,7 @@ const ScheduleDay = ({ day, classes }) => (
 			)) }
 		</div>
 	</ScheduleDayStyles>
-);
+));
 
 ScheduleDay.defaultProps = {
 	classes: [],

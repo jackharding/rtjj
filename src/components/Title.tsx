@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Title = styled.h1`
 	margin: 0;
-	color: ${({ white, theme }) => (white ? '#fff' : theme.color.brand[900])};
+	color: ${({ white, theme }) => (white ? '#fff' : theme.color.text)};
 	font-family: ${({ theme }) => theme.font.display};
 	font-size: ${({ size }) => {
 		if(size === 'md') return '1.625rem';

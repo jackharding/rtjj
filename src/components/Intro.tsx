@@ -53,7 +53,7 @@ const Intro = ({ title, text }) => (
 				{ title }
 			</Title>
 
-			<motion.div>
+			<motion.div variants={animation.text}>
 				<BlockContent blocks={text} />
 			</motion.div>
 		</Container>

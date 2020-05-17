@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../layouts/Main';
 
+import About from '../components/About';
 import CallToAction from '../components/CallToAction';
 import Contact from '../components/Contact';
 import Hero from '../components/Hero';
@@ -21,6 +22,7 @@ const Home = ({ data }: HomeProps) => {
 		settings,
 		home: {
 			hero,
+			_rawAbout,
 			_rawIntro,
 			pricing,
 			banner,
@@ -42,6 +44,12 @@ const Home = ({ data }: HomeProps) => {
 			/>
 
 			<ScheduleSwitcher />
+
+			<About
+				title={_rawAbout.title}
+				text={_rawAbout.text}
+				image={_rawAbout.image}
+			/>
 
 			<Pricing
 				title={pricing.title}

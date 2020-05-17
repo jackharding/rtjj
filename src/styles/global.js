@@ -7,6 +7,8 @@ export default `
 		padding: 0;
 		margin: 0;
 		font-family: 'Work Sans', sans-serif;
+		overflow-x: hidden;
+		color: ${({ theme }) => theme.color.text};
 	}
 
 	h1,h2,h3,h4,h5 {
@@ -16,7 +18,9 @@ export default `
 	}
 
 	button {
-		all: unset;
+		padding: 0;
+		border: 0;
+		background: none;
 
 		&:not([disabled]) {
 			cursor: pointer;
@@ -42,6 +46,11 @@ export default `
 		}
 	}
 
+	svg {
+		display: block;
+		fill: currentColor;
+	}
+
 	.sr-only {
 		position: absolute;
 		width: 1px;
@@ -51,5 +60,29 @@ export default `
 		overflow: hidden;
 		clip: rect(0,0,0,0);
 		border: 0;
+	}
+
+	.slick-dots {
+		display: flex!important;
+		justify-content: center;
+
+		li {
+			+li {
+				margin-left: 6px;
+			}
+		}
+
+		button {
+			width: 10px;
+			height: 10px;
+			border-radius: 5px;
+			background: ${({ theme }) => theme.dots.inactive};
+		}
+
+		.slick-active {
+			button {
+				background: ${({ theme }) => theme.dots.active};
+			}
+		}
 	}
 `;
