@@ -22,6 +22,7 @@ const Home = ({ data }: HomeProps) => {
 		settings,
 		home: {
 			hero,
+			about,
 			_rawAbout,
 			_rawIntro,
 			pricing,
@@ -48,7 +49,7 @@ const Home = ({ data }: HomeProps) => {
 			<About
 				title={_rawAbout.title}
 				text={_rawAbout.text}
-				image={_rawAbout.image}
+				image={about.image.image.asset.url}
 			/>
 
 			<Pricing
@@ -96,6 +97,15 @@ export const query = graphql`
 		}
 	  }
 	  _rawIntro
+	  about {
+		image {
+		  image {
+			asset {
+			  url
+			}
+		  }
+		}
+	  }
 	  _rawAbout
 	  coaches {
 		title
