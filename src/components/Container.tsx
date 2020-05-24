@@ -6,7 +6,7 @@ interface ContainerProps {
 
 export enum ContainerSizes {
 	xs = '684px',
-	sm = '864px',
+	sm = '874px',
 	md = '1152px',
 	lg = '1296px',
 }

@@ -11,6 +11,10 @@ const Title = motion.custom(T);
 const IntroStyles = styled(motion.div)`
 	padding: 70px 0;
 	text-align: center;
+
+	@media (max-width: 599px) {
+		padding-bottom: 35px;
+	}
 `;
 
 const animation = {

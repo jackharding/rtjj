@@ -4,13 +4,12 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Helmet } from 'react-helmet';
 
 import theme from '../config/theme';
-import { global, reset, slick } from '../styles';
+import { global, slick } from '../styles';
 
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 const GlobalStyles = createGlobalStyle`
-	${reset};
 	${slick};
 	${global};
 `;

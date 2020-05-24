@@ -61,7 +61,7 @@ const Home = ({ data }: HomeProps) => {
 			<CallToAction
 				title={banner.title}
 				text={banner.text}
-				image={banner.image}
+				image={banner.image.image.asset.url}
 				link={banner.link}
 				linkText={banner.linkText}
 			/>

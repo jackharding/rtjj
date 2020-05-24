@@ -34,6 +34,11 @@ const ScheduleDayStyles = styled.div`
 	.class {
 		display: flex;
 
+		p {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
 		&-time {
 			width: 34px;
 			margin-right: 8px;

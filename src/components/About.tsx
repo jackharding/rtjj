@@ -8,7 +8,29 @@ import Title from './Title';
 
 import useInView from '../hooks/useInView';
 
-const AboutStyles = styled.div`
+const animation = {
+	image: {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+		},
+	},
+	text: {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+			transition: {
+				delay: 0.25,
+			},
+		},
+	},
+};
+
+const AboutStyles = styled(motion.div)`
 	position: relative;
 
 	${Container} {
@@ -40,7 +62,7 @@ const AboutStyles = styled.div`
 	}
 
 	+* {
-		margin-top: 75px;
+		margin-top: 90px;
 	}
 
 	@media (max-width: 1269px) {
@@ -67,13 +89,19 @@ const AboutStyles = styled.div`
 	}
 
 	@media (max-width: 699px) {
+		text-align: center;
+
 		.text {
 			column-count: 1;
 		}
+
+		+* {
+			margin-top: 70px;
+		}
 	}
 
-	@media (max-width: 699px) {
-		text-align: center;
+	@media (max-width: 599px) {
+		margin-top: -125px;
 	}
 `;
 
@@ -84,25 +112,31 @@ const About = ({
 }) => {
 	const [ ref, visible ] = useInView();
 
-	console.log(image);
-
 	return (
-		<AboutStyles>
-			<div className="img">
+		<AboutStyles ref={ref}>
+			<motion.div
+				className="img"
+				variants={animation.image}
+				animate={visible ? 'show' : 'hidden'}
+			>
 				<img
 					src={image}
 					alt=""
 				/>
-			</div>
+			</motion.div>
 
 			<Container size="lg">
-				<div className="content">
+				<motion.div
+					className="content"
+					variants={animation.text}
+					animate={visible ? 'show' : 'hidden'}
+				>
 					<Title as="h2">{ title }</Title>
 					<BlockContent
 						blocks={text}
 						className="text"
 					/>
-				</div>
+				</motion.div>
 			</Container>
 		</AboutStyles>
 	);

@@ -16,7 +16,7 @@ const Title = motion.custom(T);
 const ScheduleStyles = styled.div`
 	position: relative;
 	margin-top: 35px;
-	padding: 0 0 70px;
+	padding: 0 0 190px;
 
 	svg {
 		position: absolute;
@@ -29,6 +29,16 @@ const ScheduleStyles = styled.div`
 
 	${T} {
 		text-align: center;
+	}
+
+	+* {
+		margin-top: -100px;
+	}
+
+	@media (max-width: 599px) {
+		svg {
+			top: 13px;
+		}
 	}
 `;
 
@@ -102,8 +112,6 @@ const ScheduleSwitcher = () => {
 	const [ ref, visible ] = useInView();
 
 	const [ index, setIndex ] = useLocalStorage(0, 'rtjj-schedule');
-
-	console.log('vis?', visible);
 
 	const schedule = index ? kids : adults;
 

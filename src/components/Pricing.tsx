@@ -16,10 +16,17 @@ const PricingStyles = styled(motion.div)`
 	+* {
 		margin-top: 75px;
 	}
+
+	${T} +* {
+		max-width: 734px;
+		margin-right: auto;
+		margin-left: auto;
+	}
 `;
+
 const Title = motion.custom(T);
 
-const PriceTiers = styled.div`
+const PriceTiers = styled(motion.div)`
 	margin: 35px -8px 0;
 
 	@media (min-width: 848px) {
@@ -33,6 +40,10 @@ const PriceTiers = styled.div`
 			padding-bottom: 20px!important;
 		}
 
+		.slick-dots.slick-dots {
+			display: none!important;
+		}
+
 		.slick-slide {
 			flex: 1;
 			margin: 0 8px;
@@ -41,7 +52,9 @@ const PriceTiers = styled.div`
 `;
 
 const PriceTier = styled.div`
+	max-width: 332px;
 	padding: 30px 22px 33px;
+	border: 1px solid rgba(100,100,100, 0.2);
 	box-shadow: ${({ theme }) => theme.shadow.card};
 
 	h4 {
@@ -79,7 +92,36 @@ const PriceTier = styled.div`
 `;
 
 const animation = {
-
+	title: {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+		},
+	},
+	text: {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+			transition: {
+				delay: 0.25,
+			},
+		},
+	},
+	tiers: {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+			transition: {
+				delay: 0.5,
+			},
+		},
+	},
 };
 
 const Pricing = ({ title, text, tiers }) => {
@@ -88,19 +130,31 @@ const Pricing = ({ title, text, tiers }) => {
 	return (
 		<PricingStyles ref={ref}>
 			<Container size="sm">
-				<Title as="h2">{ title }</Title>
-				<motion.p>{ text }</motion.p>
+				<Title
+					as="h2"
+					variants={animation.title}
+					animate={visible ? 'show' : 'hidden'}
+				>
+					{ title }
+				</Title>
 
-				<PriceTiers>
+				<motion.p
+					variants={animation.text}
+					animate={visible ? 'show' : 'hidden'}
+				>
+					{ text }
+				</motion.p>
+
+				<PriceTiers
+					variants={animation.tiers}
+					animate={visible ? 'show' : 'hidden'}
+				>
 					<Slider
 						settings={{
 							infinite: false,
-							responsive: [
-								{
-									breakpoint: 900,
-									settings: 'unslick',
-								},
-							],
+							mobileFirst: true,
+							dots: true,
+							arrows: false,
 						}}
 					>
 						{ tiers.map(({

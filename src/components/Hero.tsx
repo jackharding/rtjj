@@ -126,6 +126,11 @@ const animation = {
 		show: {
 			opacity: 1,
 			x: 0,
+			transition: {
+				type: 'tween',
+				// delay: 0.25,
+				ease: 'linear',
+			},
 		},
 	},
 	button: {
@@ -139,9 +144,9 @@ const animation = {
 	},
 };
 
-const Hero = ({
+const Hero: React.FC<HeroProps> = ({
 	titleParts, image, link, linkText,
-}: HeroProps) => (
+}) => (
 	<HeroStyles image={image}>
 		<Container
 			initial="hidden"

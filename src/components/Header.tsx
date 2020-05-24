@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import HeadRoom from 'react-headroom';
+import { push as Menu } from 'react-burger-menu';
 
 import Button from './Button';
 import Container from './Container';
@@ -158,21 +159,23 @@ const Header: React.FC = ({ logo, instagramUrl, facebookUrl }: HeaderProps) => (
 				</svg>
 			</button>
 
-			<nav>
-				<ul>
-					{ menu.map(({ text, link }) => (
-						<li key={`link-${link}`}>
-							<Button
-								as="a"
-								href={link}
-							>
-								{ text }
+			<Menu>
+				<nav>
+					<ul>
+						{ menu.map(({ text, link }) => (
+							<li key={`link-${link}`}>
+								<Button
+									as="a"
+									href={link}
+								>
+									{ text }
 
-							</Button>
-						</li>
-					)) }
-				</ul>
-			</nav>
+								</Button>
+							</li>
+						)) }
+					</ul>
+				</nav>
+			</Menu>
 
 			{ facebookUrl ? (
 				<SocialLink

@@ -12,6 +12,7 @@ export default {
 			900: '#1E0B2D',
 		},
 		text: '#232323',
+		textInverted: '#E5E2E5',
 		black: '#232323',
 	},
 	font: {
@@ -19,7 +20,7 @@ export default {
 		body: '\'Work Sans\', sans-serif',
 	},
 	shadow: {
-		card: '6px 6px 5px -1px rgba(0,0,0,0.15)',
+		card: '7px 9px 10px -2px rgba(100,100,100,0.25)',
 	},
 	dots: {
 		active: '#8530C7',
