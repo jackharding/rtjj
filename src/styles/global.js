@@ -9,6 +9,7 @@ export default css`
 	html {
 		font-size: 16px;
 		box-sizing: border-box;
+		scroll-behavior: smooth;
 	}
 
 	*,*:before,*:after {
@@ -22,9 +23,14 @@ export default css`
 		line-height: 1.5;
 		overflow-x: hidden;
 		color: ${theme.color.text};
+
+		&.menu-open {
+			overflow: hidden;
+		}
 	}
 
 	h1,h2,h3,h4,h5 {
+		margin: 0;
 		text-transform: uppercase;
 		font-family: 'Squada One', sans-serif;
 		line-height: 1;
@@ -49,7 +55,8 @@ export default css`
 	a {
 		color: ${theme.color.brand['500']};
 		text-decoration: none;
-		transition: .3s;
+		transition-property: color, background, border;
+		transition-duration: .3s;
 
 		&:hover {
 			color: ${theme.color.brand['400']};

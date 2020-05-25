@@ -62,6 +62,7 @@ const ContactStyles = styled.div`
 	}
 
 	.contact-map {
+		width: 100vw;
 		max-width: 590px;
 		min-height: 340px;
 
@@ -89,7 +90,6 @@ const ContactStyles = styled.div`
 
 		.contact-map {
 			max-width: none;
-			width: 100vw;
 			margin: 25px -20px 0;
 		}
 	}
@@ -110,7 +110,10 @@ const Contact: React.FC<ContactProps> = ({
 	const [ ref, visible ] = useInView();
 
 	return (
-		<ContactStyles ref={ref}>
+		<ContactStyles
+			ref={ref}
+			id="contact"
+		>
 			<Container size="lg">
 				<motion.div
 					className="contact-left"

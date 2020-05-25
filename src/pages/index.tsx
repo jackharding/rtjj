@@ -16,8 +16,6 @@ interface HomeProps {
 }
 
 const Home = ({ data }: HomeProps) => {
-	console.log('home props', data);
-
 	const {
 		settings,
 		home: {

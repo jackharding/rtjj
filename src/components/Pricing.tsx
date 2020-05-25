@@ -128,7 +128,10 @@ const Pricing = ({ title, text, tiers }) => {
 	const [ ref, visible ] = useInView();
 
 	return (
-		<PricingStyles ref={ref}>
+		<PricingStyles
+			ref={ref}
+			id="sign-up"
+		>
 			<Container size="sm">
 				<Title
 					as="h2"

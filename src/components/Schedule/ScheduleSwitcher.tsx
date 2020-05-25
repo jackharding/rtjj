@@ -120,6 +120,7 @@ const ScheduleSwitcher = () => {
 			ref={ref}
 			initial="hidden"
 			animate={visible ? 'show' : 'hidden'}
+			id="schedule"
 		>
 			<Title
 				variants={animation.title}

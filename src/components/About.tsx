@@ -113,7 +113,10 @@ const About = ({
 	const [ ref, visible ] = useInView();
 
 	return (
-		<AboutStyles ref={ref}>
+		<AboutStyles
+			ref={ref}
+			id="about"
+		>
 			<motion.div
 				className="img"
 				variants={animation.image}

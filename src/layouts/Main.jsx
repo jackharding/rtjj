@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Helmet } from 'react-helmet';
@@ -15,6 +15,8 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const Main = ({ children }) => {
+	const [ menuOpen, setMenuOpen ] = useState(false);
+
 	const { site } = useStaticQuery(
 		graphql`
 			{
@@ -34,7 +36,11 @@ const Main = ({ children }) => {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Helmet>
+			<Helmet
+				bodyAttributes={{
+					class: menuOpen ? 'menu-open' : '',
+				}}
+			>
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
@@ -82,6 +88,8 @@ const Main = ({ children }) => {
 				logo={site.logo.asset.url}
 				instagramUrl={site.instagramUrl}
 				facebookUrl={site.facebookUrl}
+				menuOpen={menuOpen}
+				onMenuToggle={() => setMenuOpen((prev) => !prev)}
 			/>
 			{ children }
 
