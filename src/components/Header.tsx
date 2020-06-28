@@ -161,7 +161,7 @@ const HeaderStyles = styled.header`
 
 			.hamburger {
 				>div {
-					background: ${({ theme }) => theme.color.brand[500]};
+					background: ${({ theme, open }) => (open ? '#fff' : theme.color.brand[500])};
 				}
 			}
 		}
