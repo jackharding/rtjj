@@ -39,6 +39,7 @@ const ContactStyles = styled.div`
 	}
 
 	address {
+		margin-top: 15px;
 		font-style: normal;
 
 		+* {
