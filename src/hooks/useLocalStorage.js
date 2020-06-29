@@ -31,9 +31,8 @@ const useLocalStorage = (initialValue, key) => {
 	useEffect(() => {
 		if(typeof window === 'undefined') return;
 
-		console.log('etting from local');
 		updateStateFromLocal();
-	}, [ window ]);
+	}, []);
 
 	return [
 		value,
