@@ -13,17 +13,20 @@ const FooterStyles = styled.footer`
 	}
 `;
 
-const Footer = () => (
-	<FooterStyles>
-		<Container size="lg">
-			<p>
-				&copy;
-				{ new Date().getFullYear() }
-				{' '}
-				RTJJ
-			</p>
-		</Container>
-	</FooterStyles>
-);
+const Footer = () => {
+	return null
+	return(
+		<FooterStyles>
+			<Container size="lg">
+				<p>
+					&copy;
+					{ new Date().getFullYear() }
+					{' '}
+					RTJJ
+				</p>
+			</Container>
+		</FooterStyles>
+	);
+}
 
 export default Footer;

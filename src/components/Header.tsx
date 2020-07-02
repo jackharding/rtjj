@@ -8,6 +8,8 @@ import Container from './Container';
 import SocialLink from './SocialLink';
 
 interface HeaderProps {
+	facebookUrl?: string;
+	instagramUrl?: string;
 	logo: string;
 	menuOpen: boolean;
 	onMenuToggle: Function;
@@ -202,9 +204,9 @@ const menu = [
 	},
 ];
 
-const Header: React.FC = ({
+const Header: React.FC<HeaderProps> = ({
 	logo, instagramUrl, facebookUrl, menuOpen, onMenuToggle,
-}: HeaderProps) => (
+}) => (
 	<HeaderStyles open={menuOpen}>
 		<Headroom>
 			<div className="header-inner">
@@ -303,6 +305,7 @@ const Header: React.FC = ({
 						<SocialLink
 							href={facebookUrl}
 							target="_blank"
+							small
 						>
 							<span className="sr-only">View our Facebook page</span>
 							<svg
